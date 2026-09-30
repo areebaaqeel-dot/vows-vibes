@@ -14,48 +14,41 @@ Bridesmaids remain free to explore dresses beyond the bride’s exact picks. The
 
 ## End-to-end user journeys
 
+### Bride journey
+
 ```mermaid
-flowchart LR
-  subgraph Bride["Bride journey"]
-    direction TB
-    B1["Open the Android app"] --> B2["Sign in with Google"]
-    B2 --> B3["Create one wedding event"]
-    B3 --> B4["Define the wedding style and color palette"]
-    B4 --> B5["Share the private invitation"]
-    B5 --> B6["Upload a fitting photo and take a guided selfie"]
-    B6 --> B7["Explore dresses with virtual try-on"]
-    B7 --> B8["Confirm the bride's look"]
-    B8 --> B9["Review confirmed party looks"]
-    B9 --> B10["Use the Wedding Pass for Pro collaboration"]
-    B10 --> B11["Exchange private suggestions"]
-    B11 --> B12["Arrange and filter the shared lineup"]
-    B12 --> B13["Save the lineup, export it or generate a group preview"]
-  end
-
-  subgraph Bridesmaid["Bridesmaid journey"]
-    direction TB
-    M1["Open the invitation in the app"] --> M2["Enter her name"]
-    M2 --> M3["Review the event summary and palette"]
-    M3 --> M4["Upload a fitting photo and take a guided selfie"]
-    M4 --> M5["Choose an example dress or upload her own"]
-    M5 --> M6["Explore the dress with virtual try-on"]
-    M6 --> M7["See Family Match or Related Shade when applicable"]
-    M7 --> M8["Confirm one look"]
-    M8 --> M9["View the shared lineup and group preview"]
-    M9 --> M10["Exchange private suggestions with the bride"]
-    M10 -. "Change the look if needed" .-> M5
-  end
-
-  B5 -. "Android App Link" .-> M1
-  M8 -. "Confirmed look joins the party" .-> B9
-  B11 -. "Send suggestion" .-> M10
-  M10 -. "Reply privately" .-> B11
-  B13 -. "Saved party view" .-> M9
+flowchart TB
+  B1["Open the Android app and sign in with Google"]
+  B1 --> B2["Create one wedding event"]
+  B2 --> B3["Define the wedding style and color palette"]
+  B3 --> B4["Add example dresses and share the private invitation"]
+  B4 --> B5["Upload a fitting photo and take a guided selfie"]
+  B5 --> B6["Explore dresses with virtual try-on and confirm a look"]
+  B6 --> B7["Review confirmed bridesmaid looks"]
+  B7 --> B8["Use the Wedding Pass for private suggestions and Pro tools"]
+  B8 --> B9["Arrange and filter the shared lineup"]
+  B9 --> B10["Save the lineup, export it or generate a group preview"]
 
   classDef bride fill:#fff1f2,stroke:#be617c,color:#292524;
+  class B1,B2,B3,B4,B5,B6,B7,B8,B9,B10 bride;
+```
+
+### Bridesmaid journey
+
+```mermaid
+flowchart TB
+  M1["Open the private invitation in the Android app"]
+  M1 --> M2["Enter her name and review the event palette"]
+  M2 --> M3["Upload a fitting photo and take a guided selfie"]
+  M3 --> M4["Choose an example dress or upload her own"]
+  M4 --> M5["Explore the dress with virtual try-on"]
+  M5 --> M6["See Family Match or Related Shade when applicable"]
+  M6 --> M7["Confirm one look for the shared lineup"]
+  M7 --> M8["View the lineup and the bride's saved group preview"]
+  M8 --> M9["Exchange private suggestions or return to choose another dress"]
+
   classDef bridesmaid fill:#faf7f2,stroke:#a8a29e,color:#292524;
-  class B1,B2,B3,B4,B5,B6,B7,B8,B9,B10,B11,B12,B13 bride;
-  class M1,M2,M3,M4,M5,M6,M7,M8,M9,M10 bridesmaid;
+  class M1,M2,M3,M4,M5,M6,M7,M8,M9 bridesmaid;
 ```
 
 The Android application is located in [`mobile/`](mobile/). Server-side APIs, authentication callbacks and invitation services are maintained at the repository root and deployed on Vercel.
