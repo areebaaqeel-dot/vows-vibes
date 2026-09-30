@@ -4,11 +4,13 @@
 
 ## Problem
 
-Coordinating bridal-party outfits is fragmented across group chats, reference photos and separate shopping decisions. Brides struggle to communicate a consistent color direction, while bridesmaids cannot easily see how a dress will look on them or alongside the rest of the party before committing.
+Coordinating bridal-party outfits is fragmented across group chats, reference photos and separate shopping decisions. Brides struggle to communicate a consistent color direction, and names such as “sage” or “emerald” can describe very different shades from one store to another. Bridesmaids want the freedom to choose a dress they love, but they cannot easily tell whether it fits the bride’s palette, how it will look on them or how it will sit alongside the rest of the party before committing. The result is guesswork, returns and repeated back-and-forth.
 
 ## Solution
 
-Vows & Vibe brings that process into one Android app. The bride defines the wedding style and palette, invites each bridesmaid, and reviews everyone together in a shared lineup. Each participant can virtually try on dresses, receive practical color guidance, confirm a look and exchange private suggestions with the bride. The result is a coordinated bridal party with fewer uncertain purchases and less back-and-forth.
+Vows & Vibe brings that process into one Android app. The bride defines the wedding style and color palette, invites each bridesmaid and reviews everyone together in a shared lineup.
+
+Bridesmaids remain free to explore dresses beyond the bride’s exact picks. The app compares a dress color with the bride’s selected palette using CIEDE2000, a perceptual color-distance measure. A shade that falls close to a selected palette color is shown as a **Family Match**—for example, willow green may coordinate closely with eucalyptus. A dress in the same broader color family but outside that close-match threshold is shown as a **Related Shade**. Bridesmaids can understand where their confirmed look fits, while the bride can filter the lineup using those relationships. Each participant can also virtually try on dresses, confirm a look and exchange private suggestions with the bride.
 
 The Android application is located in [`mobile/`](mobile/). Server-side APIs, authentication callbacks and invitation services are maintained at the repository root and deployed on Vercel.
 
