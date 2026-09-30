@@ -2,7 +2,13 @@
 
 **See it. Style it. Love it.**
 
-Vows & Vibe is an Android bridal-party styling application. A bride creates a wedding, defines its style and palette, invites bridesmaids, and brings everyone’s confirmed virtual try-on into a shared lineup.
+## Problem
+
+Coordinating bridal-party outfits is fragmented across group chats, reference photos and separate shopping decisions. Brides struggle to communicate a consistent color direction, while bridesmaids cannot easily see how a dress will look on them or alongside the rest of the party before committing.
+
+## Solution
+
+Vows & Vibe brings that process into one Android app. The bride defines the wedding style and palette, invites each bridesmaid, and reviews everyone together in a shared lineup. Each participant can virtually try on dresses, receive practical color guidance, confirm a look and exchange private suggestions with the bride. The result is a coordinated bridal party with fewer uncertain purchases and less back-and-forth.
 
 The Android application is located in [`mobile/`](mobile/). Server-side APIs, authentication callbacks and invitation services are maintained at the repository root and deployed on Vercel.
 
@@ -56,7 +62,7 @@ A bridesmaid opens the wedding invitation, enters her name and receives a privat
 
 1. Review the bride’s event summary and palette.
 2. Upload a full-body photo.
-3. Capture a guided selfie for her personal color guide.
+3. Capture a guided selfie for personal color guidance based on her undertone.
 4. Choose an example dress or upload her own dress.
 5. Generate virtual try-ons and revisit saved previews.
 6. Confirm one look for the shared lineup.
@@ -113,7 +119,7 @@ The Android app uses RevenueCat for a one-time **Vows & Vibe Pro Wedding Pass**.
 
 Confirmed participant cutouts appear in a Fabric.js canvas controlled by the bride. The bride can reposition people, adjust layering, hide participants, filter by palette relationship, save the arrangement and export a PNG.
 
-For a polished group preview, the bride can add a venue image and generate a composition through Alibaba Cloud Model Studio’s Qwen Image API. A saved preview becomes visible to the bridal party.
+For a polished group preview, the bride can add a venue image and generate a composition through an image-generation model. A saved preview becomes visible to the bridal party.
 
 ## Mobile architecture and supporting services
 
@@ -125,60 +131,6 @@ For a polished group preview, the bride can add a venue image and generate a com
 - **Lineup canvas:** Fabric.js
 - **Background removal:** `@imgly/background-removal-node`
 - **Group preview:** Alibaba Cloud Model Studio / Qwen Image
-
-The Android package ID is `com.vowsvibe.mobile`. The APK bundles its frontend assets and communicates with the deployed HTTPS backend; it does not require a locally running Next.js server.
-
-## Build the Android APK
-
-### Requirements
-
-- Node.js 22 or newer
-- Java 21
-- Android SDK Platform 36 and build tools
-- A configured `mobile/.env.local` containing public mobile values only
-
-Install the mobile dependencies:
-
-```bash
-cd mobile
-npm install
-```
-
-Create `mobile/.env.local` from `mobile/.env.example` and configure the deployed services:
-
-```dotenv
-VITE_APP_MODE=live
-VITE_API_BASE_URL=https://vowsvibe-one.vercel.app
-VITE_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
-VITE_SUPABASE_ANON_KEY=YOUR_PUBLIC_SUPABASE_KEY
-VITE_INVITE_BASE_URL=https://vowsvibe-one.vercel.app
-VITE_CAMERA_KIT_ENABLED=false
-VITE_REVENUECAT_API_KEY=YOUR_PUBLIC_REVENUECAT_TEST_STORE_KEY
-VITE_REVENUECAT_ENTITLEMENT=vows_vibes_pro
-VITE_REVENUECAT_OFFERING=
-```
-
-Never place a Supabase service-role key, RevenueCat secret key or webhook authorization value in `mobile/.env.local`; every `VITE_*` value is bundled into the APK.
-
-Build the debug APK:
-
-```bash
-npm run android:build
-```
-
-The generated file is:
-
-```text
-mobile/android/app/build/outputs/apk/debug/app-debug.apk
-```
-
-Install or update it on a connected Android device without clearing app data:
-
-```bash
-$ANDROID_HOME/platform-tools/adb install -r android/app/build/outputs/apk/debug/app-debug.apk
-```
-
-The debug APK is intended for direct device installation. A store release requires a production RevenueCat Android public key and a separately configured release-signing setup.
 
 ## Repository map
 
