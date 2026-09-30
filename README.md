@@ -12,13 +12,12 @@ The Android application is located in [`mobile/`](mobile/). Server-side APIs, au
 
 Install the downloaded APK on an Android device.
 
-- **Current release:** `v0.1.0` — updated September 30, 2026
-- **SHA-256:** `aec490ec769a63f44c50f51180ffb8150386c4ea14c7da2897d6a2eda33bd54e`
+- **Current release:** `v1.0.0` — updated September 30, 2026
+- **SHA-256:** `d3ddf51008eb651423688c42a70325607a1923182da7635cc2a8684de980c2b3`
 
 - **Android package:** `com.vowsvibe.mobile`
 - **Mobile source:** [`mobile/src/`](mobile/src/)
 - **Native Android project:** [`mobile/android/`](mobile/android/)
-- **Mobile documentation:** [`mobile/README.md`](mobile/README.md)
 
 ## Product overview
 
