@@ -18,21 +18,26 @@ Bridesmaids remain free to explore dresses beyond the bride’s exact picks. The
 flowchart TB
   B1["Bride defines the wedding style and color palette"]
   B1 --> B2["Bride adds example dresses and shares the private invitation"]
-  B2 --> B3["Bride explores dresses with virtual try-on and confirms her look"]
-  B3 --> M1["Bridesmaid reviews the wedding direction and chooses or uploads a dress"]
+
+  B2 -->|Bride path| B3["Bride explores dresses with virtual try-on"]
+  B3 --> B4["Bride confirms her selected look"]
+
+  B2 -->|Bridesmaid path| M1["Bridesmaid reviews the wedding direction and chooses or uploads a dress"]
   M1 --> M2["Bridesmaid explores the dress with virtual try-on"]
   M2 --> M3["App shows Family Match or Related Shade when applicable"]
   M3 --> M4["Bridesmaid confirms her selected look"]
-  M4 --> S1["Confirmed looks join the shared lineup"]
+
+  B4 --> S1["Confirmed looks join the shared lineup"]
+  M4 --> S1
   S1 --> S2["Bride and bridesmaid exchange private suggestions"]
-  S2 --> B4["Bride filters by palette relationship and arranges the party"]
-  B4 --> B5["Bride saves the lineup, exports it or generates a venue preview"]
-  B5 --> M5["Bridesmaid views the final lineup and saved group preview"]
+  S2 --> B5["Bride filters by palette relationship and arranges the party"]
+  B5 --> B6["Bride saves the lineup, exports it or generates a venue preview"]
+  B6 --> M5["Bridesmaid views the final lineup and saved group preview"]
 
   classDef bride fill:#fff1f2,stroke:#be617c,color:#292524;
   classDef bridesmaid fill:#faf7f2,stroke:#a8a29e,color:#292524;
   classDef shared fill:#f5f3ff,stroke:#8b5cf6,color:#292524;
-  class B1,B2,B3,B4,B5 bride;
+  class B1,B2,B3,B4,B5,B6 bride;
   class M1,M2,M3,M4,M5 bridesmaid;
   class S1,S2 shared;
 ```
