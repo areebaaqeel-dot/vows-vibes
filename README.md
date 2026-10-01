@@ -2,76 +2,32 @@
 
 **See it. Style it. Love it.**
 
-## Problem
+[📱 Download the Android APK](https://github.com/areebaaqeel-dot/vows-vibes/releases/latest/download/vowsvibe-android-debug.apk) · [▶️ Demo video](https://youtube.com/shorts/DTSpsm3_4W4)
 
-Coordinating bridal-party outfits is fragmented across group chats, reference photos and separate shopping decisions. Brides struggle to communicate a consistent color direction, and names such as “sage” or “emerald” can describe very different shades from one store to another. Bridesmaids want the freedom to choose a dress they love, but they cannot easily tell whether it fits the bride’s palette, how it will look on them or how it will sit alongside the rest of the party before committing. The result is guesswork, returns and repeated back-and-forth.
 
-## Solution
+## The Problem
 
-Vows & Vibe brings that process into one Android app. The bride defines the wedding style and color palette, invites each bridesmaid and reviews everyone together in a shared lineup.
+Coordinating bridal-party outfits is fragmented across group chats, reference photos and separate shopping decisions. Brides struggle to communicate a consistent color direction, and "sage" or "emerald" can mean very different shades from one store to the next.
 
-Bridesmaids remain free to explore dresses beyond the bride’s exact picks. The app compares a dress color with the bride’s selected palette using CIEDE2000, a perceptual color-distance measure. A shade that falls close to a selected palette color is shown as a **Family Match**—for example, willow green may coordinate closely with eucalyptus. A dress in the same broader color family but outside that close-match threshold is shown as a **Related Shade**. Bridesmaids can understand where their confirmed look fits, while the bride can filter the lineup using those relationships. Each participant can also virtually try on dresses, confirm a look and exchange private suggestions with the bride.
+Bridesmaids often want the freedom to choose a dress they love, but they can't easily tell whether it fits the bride's palette, how it will look on them, or how it will sit alongside the rest of the party before committing. The result is guesswork, returns and a lot of back-and-forth.
 
-## Main workflow
+## The Solution
 
-```mermaid
-flowchart TB
-  B1["Bride defines the wedding style and color palette"]
-  B1 --> B2["Bride adds example dresses and shares the private invitation"]
+Vows & Vibe brings that process into one Android app. The bride defines the wedding style and color palette, invites each bridesmaid, and reviews everyone together in a shared lineup.
 
-  B2 -->|Bride path| B3["Bride explores dresses with virtual try-on"]
-  B3 --> B4["Bride confirms her selected look"]
+Bridesmaids are free to explore dresses beyond the bride's exact picks. For any dress, the app identifies its color family, suggests related shades that stay within the palette, and uses the CIEDE2000 color-difference formula (which measures color distance the way the human eye perceives it) to show how close the dress is to the bride's chosen colors. Each participant can virtually try on dresses, confirm a look and exchange private suggestions with the bride.
 
-  B2 -->|Bridesmaid path| M1["Bridesmaid reviews the wedding direction and chooses or uploads a dress"]
-  M1 --> M2["Bridesmaid explores the dress with virtual try-on"]
-  M2 --> M3["App shows Family Match or Related Shade when applicable"]
-  M3 --> M4["Bridesmaid confirms her selected look"]
+The result is a bridal party that looks coordinated without everyone wearing the same dress, with fewer uncertain purchases and less back-and-forth.
 
-  B4 --> S1["Confirmed looks join the shared lineup"]
-  M4 --> S1
-  S1 --> S2["Bride and bridesmaid exchange private suggestions"]
-  S2 --> B5["Bride filters by palette relationship and arranges the party"]
-  B5 --> B6["Bride saves the lineup, exports it or generates a venue preview"]
-  B6 --> M5["Bridesmaid views the final lineup and saved group preview"]
+## Try It in 2 Minutes
 
-  classDef bride fill:#fff1f2,stroke:#be617c,color:#292524;
-  classDef bridesmaid fill:#faf7f2,stroke:#a8a29e,color:#292524;
-  classDef shared fill:#f5f3ff,stroke:#8b5cf6,color:#292524;
-  class B1,B2,B3,B4,B5,B6 bride;
-  class M1,M2,M3,M4,M5 bridesmaid;
-  class S1,S2 shared;
-```
+1. Install the APK above. It's a debug build, so Android may ask you to allow installs from your browser or file manager.
+2. Sign in with Google as the **bride** and create a wedding event (date, dress direction, palette).
+3. Copy the private **invitation link** the app generates for the event.
+4. Open that link on the same or another Android device. It opens in the installed app as a **bridesmaid**, with no separate account needed.
+5. Upload a full-body photo, pick a dress and generate a virtual try-on (VTO).
 
-The Android application is located in [`mobile/`](mobile/). Server-side APIs, authentication callbacks and invitation services are maintained at the repository root and deployed on Vercel.
-
-## Download the Android app
-
-[Download the latest Vows & Vibe APK](https://github.com/areebaaqeel-dot/vows-vibes/releases/latest/download/vowsvibe-android-debug.apk)
-
-Install the downloaded APK on an Android device.
-
-- **Current release:** `v1.0.0` — updated September 30, 2026
-- **SHA-256:** `d3ddf51008eb651423688c42a70325607a1923182da7635cc2a8684de980c2b3`
-
-- **Android package:** `com.vowsvibe.mobile`
-- **Mobile source:** [`mobile/src/`](mobile/src/)
-- **Native Android project:** [`mobile/android/`](mobile/android/)
-
-## Product overview
-
-- Google sign-in and event management for the bride
-- Invite-link entry for bridesmaids without separate accounts
-- Android App Links that open invitations directly in the installed app
-- Full-body dress virtual try-on powered by Perfect Corp YouCam
-- Guided selfie capture for skin-tone and undertone guidance
-- Bride and bridesmaid dress rails with saved try-on history
-- Shared bridal-party lineup with drag, layering and color filters
-- Direct suggestion conversations between the bride and each bridesmaid
-- Venue group previews powered by Qwen Image
-- Saved lineup state and PNG export
-- One-time RevenueCat Wedding Pass with shared party access
-
-## Bride workflow
+## Bride Workflow
 
 The bride signs in with Google and can:
 
@@ -81,90 +37,109 @@ The bride signs in with Google and can:
 4. Upload a full-body photo and capture one guided skin-tone selfie.
 5. Generate and save virtual try-on previews.
 6. Confirm her final look.
-7. Arrange confirmed party members in the lineup canvas.
-8. Filter the lineup by palette relationship.
-9. Open a bridesmaid list and enter an individual suggestion conversation.
-10. Generate a venue group preview or export the arranged lineup.
+7. Arrange confirmed party members in the lineup canvas and filter by palette relationship.
+8. Open a bridesmaid list and enter an individual suggestion conversation.
+9. Optionally generate a venue group preview, and save or export the arranged lineup as a PNG.
 
-The bride can also delete the event and its associated participant photos, dresses, previews, messages and lineup data.
+The bride can also delete the event and all associated participant photos, dresses, previews, messages and lineup data.
 
-## Bridesmaid workflow
+## Bridesmaid Workflow
 
-A bridesmaid opens the wedding invitation, enters her name and receives a private fitting session. She can:
+A bridesmaid opens the invitation link, enters her name and receives a private fitting session. She can:
 
-1. Review the bride’s event summary and palette.
+1. Review the bride's event summary and palette.
 2. Upload a full-body photo.
 3. Capture a guided selfie for personal color guidance based on her undertone.
-4. Choose an example dress or upload her own dress.
+4. Choose an example dress or upload her own.
 5. Generate virtual try-ons and revisit saved previews.
 6. Confirm one look for the shared lineup.
-7. View the lineup and the bride’s saved group preview.
+7. View the lineup and the bride's saved group preview, if she created one.
 8. Exchange suggestions directly with the bride.
 
-Bridesmaids cannot message other bridesmaids. The bride has a separate conversation for each bridesmaid, while a bridesmaid opens directly into her conversation with the bride.
+Bridesmaids cannot message each other. The bride has a separate conversation with each bridesmaid, and each bridesmaid opens directly into her conversation with the bride.
 
-## Color guidance
+## Color Guidance
 
-The app keeps color guidance simple and advisory:
+Color guidance is simple and advisory.
 
-- A guided selfie produces a saved skin-tone value and warm, cool or neutral undertone classification.
-- The color guide shows shades that generally complement that undertone and shades that may appear less balanced.
-- The event summary can place an undertone-aware **Suggested match** beside suitable colors from the bride’s palette.
-- Bridesmaid dress cards can show **Family Match** when a shade coordinates closely with the wedding palette.
-- Bridesmaid dress cards can show **Related shade** when a color belongs to the same family but is noticeably lighter, darker or different.
-- No badge is shown when a bridesmaid dress is neither a Family Match nor a Related shade.
-- The bride’s lineup canvas retains Palette Match, Family Match, Related shade and Different family filtering.
+- A guided selfie produces a saved skin-tone value and a warm, cool or neutral undertone classification.
+- The color guide shows shades that generally complement that undertone and shades that may look less balanced.
+- The event summary can show an undertone-aware **Suggested match** beside suitable colors from the bride's palette.
 
-skin tone classification use CIE Lab conversion and Palette relationships uses CIEDE2000 distance where perceptual comparison is useful. Results are styling suggestions rather than scientific or mandatory rules; lighting, cameras, fabric and personal preference still matter.
+Badges on bridesmaid dress cards:
 
-## Virtual try-on and privacy
+| Badge | Meaning |
+|---|---|
+| **Family Match** | The shade coordinates closely with the wedding palette |
+| **Related shade** | Same color family, but noticeably lighter, darker or different |
+| *(none)* | Neither a Family Match nor a Related shade |
 
-The full-body photo is uploaded to the wedding’s private fitting workflow and is removed when the event is deleted. The separate guided selfie is sent to Perfect Corp for analysis in memory and is not saved to Supabase Storage. Only the derived skin, hair and undertone values are retained.
+The bride's lineup canvas can filter by **Palette Match**, **Family Match**, **Related shade** and **Different family**.
 
-Virtual try-on attempts are stored in `vto_attempts`, allowing each participant to revisit previous successful previews and confirm one final look. Confirmed looks receive background-removed cutouts for the shared lineup.
+Skin-tone classification uses CIE Lab conversion, and palette relationships use CIEDE2000 distance where perceptual comparison is useful. Results are styling suggestions, not scientific or mandatory rules: lighting, cameras, fabric and personal preference all still matter.
+
+## Virtual Try-On and Privacy
+
+| Data | Where it goes | Retention |
+|---|---|---|
+| Full-body photo | Private Supabase Storage bucket, protected by Row Level Security. Short-lived signed URLs are used for repeated try-ons. | Deleted when the event is deleted |
+| Guided selfie | Sent directly to Perfect Corp YouCam for skin-color extraction | **Never stored.** Only the derived skin hex, hair and undertone values are kept |
+| Try-on previews | `vto_attempts` table | Lets each participant revisit successful previews and confirm one final look |
+| Optional venue image and group preview | Sent to Alibaba Cloud Qwen Image, only if the bride generates a group preview | Saved preview is visible to the bridal party |
+
+Confirmed looks receive background-removed cutouts for the shared lineup.
 
 ## Suggestions
 
-Suggestions use the Supabase message and Realtime:
+Suggestions are stored in Supabase and delivered through Supabase Realtime.
 
-- Bride → bridesmaid is allowed.
-- Bridesmaid → bride is allowed.
+- Bride → bridesmaid and bridesmaid → bride are allowed.
 - Messages are organized into individual conversations.
-- Suggestions remain tied to the recipient’s current confirmed look, so stale look-specific messages are not shown after that look changes.
+- Suggestions stay tied to the recipient's current confirmed look, so stale look-specific messages disappear when that look changes.
 
 ## RevenueCat Wedding Pass
 
 The Android app uses RevenueCat for a one-time **Vows & Vibe Pro Wedding Pass**.
 
-### Access model
+- The bride buys the pass once for her wedding. Invited bridesmaids inherit her verified entitlement and never purchase separately.
+- RevenueCat customer identity uses the signed-in bride's Supabase user UUID.
+- The entitlement ID is `vows_vibes_pro`.
+- Entitlements are verified server-side by the backend, using RevenueCat webhooks and verification.
 
-- The bride purchases the pass once for her wedding.
-- RevenueCat customer identity uses the signed-in bride’s Supabase user UUID.
-- The active entitlement ID is `vows_vibes_pro`.
-- Invited bridesmaids inherit the bride’s verified entitlement and never purchase separately.
-- The free bride plan supports one wedding, two dress uploads, two successful bride try-ons and one saved bride skin-tone analysis.
-- Pro supports eight total successful try-ons per participant, one saved skin-tone analysis per participant, unlimited dress uploads, suggestions, lineup saving/export and group previews.
-- Try-on allowances are totals for the wedding and do not reset.
+| | Free (bride) | Pro Wedding Pass |
+|---|---|---|
+| Weddings | 1 | 1 |
+| Dress uploads | 2 | Unlimited |
+| Successful try-ons | 2 (bride) | 8 per participant |
+| Saved skin-tone analyses | 1 (bride) | 1 per participant |
+| Suggestions | – | ✅ |
+| Lineup saving and export | – | ✅ |
+| Group preview | – | ✅ |
 
+Try-on allowances are totals for the wedding and do not reset.
 
-## Shared lineup and group preview
+## Shared Lineup and Group Preview
 
-Confirmed participant cutouts appear in a Fabric.js canvas controlled by the bride. The bride can reposition people, adjust layering, hide participants, filter by palette relationship, save the arrangement and export a PNG.
+Confirmed participant cutouts appear in a Fabric.js canvas controlled by the bride. She can reposition people, adjust layering, hide participants, filter by palette relationship, save the arrangement and export a PNG.
 
-For a polished group preview, the bride can add a venue image and generate a composition through an image-generation model. A saved preview becomes visible to the bridal party.
+The **group preview is optional**. The bride can add a venue image and generate a composition with an image-generation model. A saved preview becomes visible to the bridal party.
 
-## Mobile architecture and supporting services
+## Architecture
 
-- **Android app:** Capacitor 8 with a bundled Vite/React frontend
-- **Supporting backend:** Next.js 16 API routes, authentication callbacks and invitation endpoints deployed on Vercel
-- **Auth, database, storage and realtime:** Supabase
-- **Purchases and entitlements:** RevenueCat Capacitor SDK plus server-side verification and webhooks
-- **Virtual try-on and skin analysis:** Perfect Corp YouCam APIs
-- **Lineup canvas:** Fabric.js
-- **Background removal:** `@imgly/background-removal-node`
-- **Group preview:** Alibaba Cloud Model Studio / Qwen Image
+| Layer | Technology |
+|---|---|
+| Android app | Capacitor 8 with a bundled Vite/React frontend |
+| Supporting backend | Next.js 16 API routes, auth callbacks and invitation endpoints on Vercel |
+| Auth, database, storage, realtime | Supabase |
+| Purchases and entitlements | RevenueCat Capacitor SDK, plus server-side verification and webhooks |
+| Virtual try-on and skin analysis | Perfect Corp YouCam APIs |
+| Lineup canvas | Fabric.js |
+| Background removal | `@imgly/background-removal-node` |
+| Group preview | Alibaba Cloud Model Studio / Qwen Image |
 
-## Repository map
+Other app features: Android App Links open invitations directly in the installed app, and lineup state is saved between sessions.
+
+## Repository Map
 
 ```text
 src/                          # Supporting Next.js backend and shared application code
